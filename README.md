@@ -4,6 +4,7 @@ scratch-spray-webapp
 A very simple webapp that can be used to quickly try out code within the Spray.io framework.
 
 The webapp can be run in SBT with the following command:
+
     $ sbt
     > re-start
 
