@@ -17,7 +17,10 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka"   %%  "akka-actor"    % "2.2.0-RC1",
   "com.typesafe.akka"   %%  "akka-testkit"  % "2.2.0-RC1" % "test",
   "org.specs2"          %%  "specs2"        % "1.14" % "test",
-  "io.spray"            %%  "spray-json"    % "1.2.5"
+  "io.spray"            %%  "spray-json"    % "1.2.5",
+  "com.typesafe.slick"  %%  "slick"         % "1.0.1",
+  "org.slf4j"           %   "slf4j-nop"     % "1.6.4",
+  "org.hsqldb"          %   "hsqldb"        % "2.2.9"
 )
 
 seq(Revolver.settings: _*)

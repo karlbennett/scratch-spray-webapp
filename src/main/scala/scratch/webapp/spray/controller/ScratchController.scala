@@ -29,8 +29,14 @@ class ScratchController extends Actor with ScratchService {
  */
 trait ScratchService extends HttpService {
 
+  import scala.slick.driver.HsqldbDriver.simple._
+  import Database.threadLocalSession
+  import scratch.webapp.spray.data.User
+
+  val dataSource = Database.forURL("jdbc:hsqldb:mem:user", user ="sa", password="", driver = "org.hsqldb.jdbcDriver")
+
   object UserJsonProtocol extends DefaultJsonProtocol {
-    implicit val UserFormat = jsonFormat4(User)
+    implicit val UserFormat = jsonFormat4(User.apply)
   }
 
   import UserJsonProtocol._
@@ -52,6 +58,9 @@ trait ScratchService extends HttpService {
         entity(as[User]) { user =>
           respondWithMediaType(`application/json`) {
             complete {
+              dataSource withSession {
+                (User.email ~ User.firstName ~ User.lastName).insert(user.email, user.firstName, user.lastName)
+              }
               user
             }
           }
@@ -60,7 +69,9 @@ trait ScratchService extends HttpService {
       get {
         respondWithMediaType(`application/json`) {
           complete {
-            List(User(Some(1), "karl@benne.tt", "Karl", "Bennett"), User(Some(1), "isaac@benne.tt", "Isaac", "Bennett"), User(Some(1), "kirstey@benne.tt", "Kirstey", "Bennet"))
+            dataSource withSession {
+              Query(User).list
+            }
           }
         }
       }

@@ -4,8 +4,16 @@ import akka.actor.{ActorSystem, Props}
 import akka.io.IO
 import spray.can.Http
 import scratch.webapp.spray.controller.ScratchController
+import scala.slick.driver.HsqldbDriver.simple._
+import scratch.webapp.spray.data.User
 
 object Boot extends App {
+
+  Database.forURL("jdbc:hsqldb:mem:user", user ="sa", password="", driver = "org.hsqldb.jdbcDriver")
+  .withSession { session:Session =>
+
+    User.ddl.create(session)
+  }
 
   // Start up the ActorSystem that the webapp will sun on.
   implicit val system = ActorSystem("on-spray-can")
