@@ -3,6 +3,7 @@ package scratch.webapp.spray.controller
 import spray.routing.HttpService
 import akka.actor.Actor
 import spray.http.MediaTypes.`application/json`
+import spray.http.MediaTypes.`text/plain`
 import spray.json.DefaultJsonProtocol
 import scratch.webapp.spray.data.User
 import spray.httpx.unmarshalling._
@@ -39,7 +40,7 @@ trait ScratchService extends HttpService {
   def scratchRoot = pathPrefix("scratch-spray-webapp" / "scratch") {
     path("") {
       get {
-        respondWithMediaType(`application/json`) {
+        respondWithMediaType(`text/plain`) {
           complete {
             "scratched"
           }
