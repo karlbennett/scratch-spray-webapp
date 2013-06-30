@@ -38,15 +38,15 @@ The webapp only contains two classes:
 The controller class that handles the `/scratch-spray-webapp/scratch/`, `/scratch-spray-webapp/scratch/users`, and
 `/scratch-spray-webapp/scratch/users/{id}` request mappings.
 
-[`scratch.webapp.spray.controller.ScratchController`](https://github.com/karlbennett/scratch-spray-webapp/blob/master/src/main/java/scratch/webapp/spray/controller/ScratchController.scala "ScratchController")
+[`scratch.webapp.spray.controller.ScratchController`](https://github.com/karlbennett/scratch-spray-webapp/blob/master/src/main/scala/scratch/webapp/spray/controller/ScratchController.scala "ScratchController")
 
 The the domain case class that can be persisted into an in memory database using the CRUD endpoints.
 
-[`scratch.webapp.spray.data.User`](https://github.com/karlbennett/scratch-spray-webapp/blob/master/src/main/java/scratch/webapp/spray/data/User.scala "User")
+[`scratch.webapp.spray.data.User`](https://github.com/karlbennett/scratch-spray-webapp/blob/master/src/main/scala/scratch/webapp/spray/data/User.scala "User")
 
 There is also a bootstrap file:
 
-The [`Boot.scala`](https://github.com/karlbennett/scratch-spray-webapp/blob/src/main/scala/scratch/webapp/spray/Boot.scala "Boot.xml")
+The [`Boot.scala`](https://github.com/karlbennett/scratch-spray-webapp/blob/master/src/main/scala/scratch/webapp/spray/Boot.scala "Boot.xml")
 file, this contains the server initialisation and handler registering.
 
 And lastly a configuration file:
